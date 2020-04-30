@@ -1,17 +1,3 @@
-// The Nature of Code
-// Daniel Shiffman
-// http://natureofcode.com
-
-// Interactive Selection
-// http://www.genarts.com/karl/papers/siggraph91.html
-
-// The class for our "face", contains DNA sequence, fitness value, position on screen
-
-// Fitness Function f(t) = t (where t is "time" mouse rolls over face)
-
-// Create a new face
-
-
 let hair_=[];
 let face_=[];
 let mouth_=[];
@@ -94,8 +80,6 @@ class Face {
     let nose_y = map(genes[10], 0, 1, -20, 10);
     let nose_x = map(genes[13], 0, 1, -20, 10);
 
-
-
     // Once we calculate all the above properties, we use those variables to draw rects, ellipses, etc.
     push();
     translate(this.x, this.y);
@@ -105,37 +89,26 @@ class Face {
     this.hair = hair_[hairstyle];
     image(this.hair,hair_x-30, hair_y-30, hairsize, hairsize);
     imageMode(CENTER);
-    ///ellipseMode(CENTER);
 
-    // Draw the head
-//    fill(c);
-//    ellipseMode(CENTER);
-//    ellipse(0, 0, r, r);
+
+    // Draw the face
     this.face = face_[facestyle];
     image(this.face,face_x, face_y, facesize, facesize);
     imageMode(CENTER);
     ///ellipseMode(CENTER);
 
-    // Draw the eyes
-//    fill(eyecolor);
-//    rectMode(CENTER);
-//    rect(-eye_x, -eye_y, eye_size, eye_size);
-//    rect(eye_x, -eye_y, eye_size, eye_size);
+    // Draw the mouth
     this.mouth = mouth_[mouthstyle];
     image(this.mouth,mouth_x, mouth_y, mouthsize, mouthsize);
     imageMode(CENTER);
-    ///ellipseMode(CENTER);
-
-    // Draw the mouth
-//    fill(mouthColor);
-//    rectMode(CENTER);
-//    rect(mouth_x, mouth_y, mouthw, mouthh);
+    
+    // Draw the eye
     this.eye = eye_[eyestyle];
     image(this.eye,eye_x, eye_y, eyesize, eyesize);
     image(this.eye,eye_x1, eye_y1, eyesize1, eyesize1);
     imageMode(CENTER);
-    ///ellipseMode(CENTER);
 
+    // Draw the nose
     this.nose = nose_[nosestyle];
     image(this.nose,nose_x, nose_y, nosesize, nosesize);
     imageMode(CENTER);
@@ -155,9 +128,9 @@ class Face {
     text('' + floor(this.fitness), this.x, this.y + 120);
   }
 
-  //getFitness() {
-  //  return this.fitness;
-//  }
+  getFitness() {
+    return this.fitness;
+  }
 
   getDNA() {
     return this.dna;
